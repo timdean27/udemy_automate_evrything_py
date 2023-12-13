@@ -10,8 +10,19 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 import time
 from datetime import datetime as dt
+import requests
 # Replace 'path/to/chromedriver.exe' with the actual path to your ChromeDriver executable
 ser_obj = Service(r"C:\Users\timde\Downloads\chromedriver-win64 (1)\chromedriver-win64\chromedriver.exe")
+
+# ticker = input("Enter the ticker symbol: ")
+# from_date = input('Enter start date in yyyy/mm/dd format:')
+# to_date = input('Enter end date in yyyy/mm/dd format:')
+
+# from_datetime = dt.strptime(from_date, '%Y/%m/%d')
+# to_datetime = dt.strptime(to_date, '%Y/%m/%d')
+
+# from_epoch = int(time.mktime(from_datetime.timetuple()))
+# to_epoch = int(time.mktime(to_datetime.timetuple()))
 
 # Define a function to get a configured WebDriver instance
 def get_driver():
@@ -58,10 +69,11 @@ def main():
     driver.find_element(by="xpath", value="/html/body/header/div/div/div/div/div/div[2]/div/div[2]/nav/ul/li[2]/a").click()
     time.sleep(5)
     driver.find_element(by="id", value="yfin-usr-qry").send_keys("sofi" + Keys.RETURN)
-    time.sleep(5)
+    time.sleep(50)
     print(driver.current_url)
-    driver.find_element(by="xpath", value="/html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[7]/div/div/section/div/ul/li[5]/a/span").click()
-
+    driver.find_element(by="xpath", value="/html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[7]/section/div/ul/li[5]/a").click()
+    time.sleep(5)
+    driver.find_element(by="xpath", value="/html/body/div[1]/div/div/div[1]/div/div[3]/div[1]/div/div[2]/div/div/section/div[1]/div[2]/span[2]/a").click()
   
 #  Call the 'main' function and print the result
 print(main())
